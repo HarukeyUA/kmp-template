@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -23,6 +24,11 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+            export(libs.decompose)
+            export(libs.essenty.lifecycle)
+            export(libs.essenty.backhandler)
+            export(libs.essenty.statekeeper)
         }
     }
 
@@ -41,6 +47,13 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            api(libs.decompose)
+            implementation(libs.decompose.compose)
+            api(libs.essenty.lifecycle)
+            api(libs.essenty.backhandler)
+            api(libs.essenty.statekeeper)
+
+            implementation(libs.kotlinx.serialization.json)
 
             api(libs.bundles.kotlinInject)
         }
