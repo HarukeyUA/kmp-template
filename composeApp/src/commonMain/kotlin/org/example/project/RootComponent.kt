@@ -8,9 +8,13 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.backhandler.BackHandlerOwner
 import kotlinx.serialization.Serializable
+import me.tatarka.inject.annotations.Assisted
+import me.tatarka.inject.annotations.Inject
 import org.example.project.RootComponent.Child.EmptyChild
+import software.amazon.lastmile.kotlin.inject.anvil.AppScope
+import software.amazon.lastmile.kotlin.inject.anvil.ContributesBinding
 
-interface RootComponent: BackHandlerOwner {
+interface RootComponent : BackHandlerOwner {
     val stack: Value<ChildStack<*, Child>>
 
     fun onBackClicked()
@@ -21,7 +25,8 @@ interface RootComponent: BackHandlerOwner {
 }
 
 class DefaultRootComponent(
-    componentContext: ComponentContext
+    componentContext: ComponentContext,
+    private val emptyComponentFactory: (componentContext: ComponentContext) -> EmptyComponent
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Config>()
 
@@ -39,7 +44,7 @@ class DefaultRootComponent(
     }
 
     private fun child(config: Config, componentContext: ComponentContext): RootComponent.Child = when (config) {
-        Config.DefaultScreen -> EmptyChild(DefaultEmptyComponent(componentContext))
+        Config.DefaultScreen -> EmptyChild(emptyComponentFactory(componentContext))
     }
 
     @Serializable

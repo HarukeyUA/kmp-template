@@ -13,11 +13,12 @@ struct iOSApp: App {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    private let appComponent: AppDIComponent = AppComponentKt.createDi()
     private var stateKeeper = StateKeeperDispatcherKt.StateKeeperDispatcher(savedState: nil)
     var backDispatcher: BackDispatcher = BackDispatcherKt.BackDispatcher()
 
-    lazy var root: RootComponent = DefaultRootComponent(
-        componentContext: DefaultComponentContext(
+    lazy var root: RootComponent = appComponent.rootComponentFacotry(
+        DefaultComponentContext(
             lifecycle: ApplicationLifecycle(),
             stateKeeper: stateKeeper,
             instanceKeeper: nil,

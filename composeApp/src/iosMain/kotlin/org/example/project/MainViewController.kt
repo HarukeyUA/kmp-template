@@ -14,8 +14,6 @@ import platform.UIKit.UIViewController
 
 @OptIn(ExperimentalDecomposeApi::class)
 fun MainViewController(root: RootComponent, backDispatcher: BackDispatcher): UIViewController {
-    val appDIComponent = create()
-
     return ComposeUIViewController {
         PredictiveBackGestureOverlay(
             backDispatcher = backDispatcher,
