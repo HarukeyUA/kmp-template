@@ -8,11 +8,9 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.backhandler.BackHandlerOwner
 import kotlinx.serialization.Serializable
-import me.tatarka.inject.annotations.Assisted
-import me.tatarka.inject.annotations.Inject
 import org.example.project.RootComponent.Child.EmptyChild
-import software.amazon.lastmile.kotlin.inject.anvil.AppScope
-import software.amazon.lastmile.kotlin.inject.anvil.ContributesBinding
+
+typealias RootComponentFactory = (compoenentContext: ComponentContext) -> RootComponent
 
 interface RootComponent : BackHandlerOwner {
     val stack: Value<ChildStack<*, Child>>
@@ -26,7 +24,7 @@ interface RootComponent : BackHandlerOwner {
 
 class DefaultRootComponent(
     componentContext: ComponentContext,
-    private val emptyComponentFactory: (componentContext: ComponentContext) -> EmptyComponent
+    private val emptyComponentFactory: EmptyComponentFactory
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Config>()
 
