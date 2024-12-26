@@ -1,7 +1,5 @@
 package org.example.project.di
 
-import com.arkivanov.decompose.ComponentContext
-import org.example.project.RootComponent
 import org.example.project.RootComponentFactory
 import software.amazon.lastmile.kotlin.inject.anvil.AppScope
 import software.amazon.lastmile.kotlin.inject.anvil.MergeComponent
@@ -13,8 +11,7 @@ abstract class AppDIComponent {
     abstract val rootComponentFacotry: RootComponentFactory
 }
 
-@MergeComponent.CreateComponent
-expect fun create(): AppDIComponent
+@MergeComponent.CreateComponent expect fun create(): AppDIComponent
 
 @Suppress("Unused") // Used in swift
 fun createDi(): AppDIComponent {

@@ -21,11 +21,12 @@ fun App(rootComponent: RootComponent) {
     MaterialTheme {
         Children(
             stack = rootComponent.stack,
-            animation = predictiveBackAnimation(
-                backHandler = rootComponent.backHandler,
-                fallbackAnimation = stackAnimation(fade() + scale()),
-                onBack = rootComponent::onBackClicked,
-            ),
+            animation =
+                predictiveBackAnimation(
+                    backHandler = rootComponent.backHandler,
+                    fallbackAnimation = stackAnimation(fade() + scale()),
+                    onBack = rootComponent::onBackClicked,
+                ),
         ) {
             Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
                 when (val child = it.instance) {
@@ -33,7 +34,7 @@ fun App(rootComponent: RootComponent) {
                         Text(
                             modifier = Modifier.fillMaxSize(),
                             text = "Empty component",
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
                         )
                     }
                 }

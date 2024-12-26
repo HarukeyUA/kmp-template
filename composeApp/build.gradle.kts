@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.serialization)
+    alias(libs.plugins.ktfmt)
 }
 
 kotlin {
@@ -94,3 +95,6 @@ dependencies {
     ksp(libs.kotlinInject.anvil.compiler)
 }
 
+ktfmt {
+    kotlinLangStyle()
+}

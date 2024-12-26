@@ -24,7 +24,7 @@ interface RootComponent : BackHandlerOwner {
 
 class DefaultRootComponent(
     componentContext: ComponentContext,
-    private val emptyComponentFactory: EmptyComponentFactory
+    private val emptyComponentFactory: EmptyComponentFactory,
 ) : RootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Config>()
 
@@ -33,7 +33,7 @@ class DefaultRootComponent(
             source = navigation,
             serializer = Config.serializer(),
             initialStack = { listOf(Config.DefaultScreen) },
-            childFactory = ::child
+            childFactory = ::child,
         )
     override val stack: Value<ChildStack<*, RootComponent.Child>> = _stack
 
@@ -41,13 +41,13 @@ class DefaultRootComponent(
         navigation.pop()
     }
 
-    private fun child(config: Config, componentContext: ComponentContext): RootComponent.Child = when (config) {
-        Config.DefaultScreen -> EmptyChild(emptyComponentFactory(componentContext))
-    }
+    private fun child(config: Config, componentContext: ComponentContext): RootComponent.Child =
+        when (config) {
+            Config.DefaultScreen -> EmptyChild(emptyComponentFactory(componentContext))
+        }
 
     @Serializable
     private sealed interface Config {
-        @Serializable
-        data object DefaultScreen : Config
+        @Serializable data object DefaultScreen : Config
     }
 }

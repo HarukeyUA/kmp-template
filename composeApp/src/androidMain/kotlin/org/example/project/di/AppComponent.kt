@@ -9,8 +9,6 @@ import software.amazon.lastmile.kotlin.inject.anvil.SingleIn
 
 @MergeComponent(AppScope::class)
 @SingleIn(AppScope::class)
-abstract class AppComponent(
-    @get:Provides val context: Context
-) {
+abstract class AppComponent(@get:Provides val context: Context) {
     abstract val rootComponentFacotry: RootComponentFactory
 }

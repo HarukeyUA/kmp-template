@@ -10,12 +10,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val root = retainedComponent() { componentContext ->
-            (this@MainActivity.application as ProjectApplication).appDiComponent.rootComponentFacotry(componentContext)
-        }
+        val root =
+            retainedComponent() { componentContext ->
+                (this@MainActivity.application as ProjectApplication)
+                    .appDiComponent
+                    .rootComponentFacotry(componentContext)
+            }
 
-        setContent {
-            App(root)
-        }
+        setContent { App(root) }
     }
 }

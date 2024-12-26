@@ -6,6 +6,5 @@ typealias EmptyComponentFactory = (compoenentContext: ComponentContext) -> Empty
 
 interface EmptyComponent
 
-class DefaultEmptyComponent(
-    componentContext: ComponentContext
-) : EmptyComponent, ComponentContext by componentContext
+class DefaultEmptyComponent(componentContext: ComponentContext) :
+    EmptyComponent, ComponentContext by componentContext
