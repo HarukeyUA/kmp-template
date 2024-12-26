@@ -16,7 +16,7 @@ kotlin = "2.1.0"
 ksp = "2.1.0-1.0.29"
 
 kotlininject = "0.7.2"
-kotlin-inject-anvil = "0.1.1"
+kotlin-inject-anvil = "0.1.2"
 
 decompose = "3.2.2"
 essenty = "2.4.0"
