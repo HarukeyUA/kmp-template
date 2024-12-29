@@ -11,7 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val root =
-            retainedComponent() { componentContext ->
+            retainedComponent { componentContext ->
                 (this@MainActivity.application as ProjectApplication)
                     .appDiComponent
                     .rootComponentFacotry(componentContext)

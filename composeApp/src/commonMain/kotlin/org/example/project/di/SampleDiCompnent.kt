@@ -3,7 +3,11 @@ package org.example.project.di
 import com.arkivanov.decompose.ComponentContext
 import me.tatarka.inject.annotations.Assisted
 import me.tatarka.inject.annotations.Provides
-import org.example.project.*
+import org.example.project.DefaultEmptyComponent
+import org.example.project.DefaultRootComponent
+import org.example.project.EmptyComponent
+import org.example.project.EmptyComponentFactory
+import org.example.project.RootComponent
 import software.amazon.lastmile.kotlin.inject.anvil.AppScope
 import software.amazon.lastmile.kotlin.inject.anvil.ContributesTo
 
