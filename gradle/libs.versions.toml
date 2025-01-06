@@ -21,7 +21,7 @@ kotlin-inject-anvil = "0.1.2"
 decompose = "3.2.2"
 essenty = "2.4.0"
 
-kotlinx-serilization-json = "1.8.0-RC"
+kotlinx-serilization-json = "1.8.0"
 
 ktfmt-gradle = "0.21.0"
 
